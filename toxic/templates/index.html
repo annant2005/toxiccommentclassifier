@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toxic Comment Classifier</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 50px;
+            text-align: center;
+        }
+        textarea {
+            width: 80%;
+            height: 100px;
+            margin: 10px 0;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Toxic Comment Classification</h1>
+    <form action="/predict" method="post">
+        <textarea name="comment" placeholder="Enter a comment..."></textarea><br>
+        <button type="submit">Check Toxicity</button>
+    </form>
+    
+    {% if toxicity_score is not none %}
+        <div class="result">
+            <p>Comment: {{ comment }}</p>
+            <p>Toxicity Score: {{ toxicity_score }}%</p>
+        </div>
+    {% endif %}
+</body>
+</html>
